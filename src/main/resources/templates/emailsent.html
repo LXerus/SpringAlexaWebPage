@@ -61,6 +61,9 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <h2 >Mensaje enviado correctamente!</h2 >
+                <p th:text = "'nombre: ' + ${emailForm.name}"/>
+                <p th:text = "'email: ' + ${emailForm.email}"/>
+                <p th:text = "'mensaje: ' + ${emailForm.message}"/>
             </div>
             <div class="col-12 d-flex justify-content-center">
                 <a class="btn btn-outline-light" href="/index.html">Regresar</a>

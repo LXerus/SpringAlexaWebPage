@@ -51,6 +51,11 @@ body{
    .contact label{
      color: white;
    }
+
+   .errormessage{
+    color: red;
+   }
+
 #footer {
     color: white;
     background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
