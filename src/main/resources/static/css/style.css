@@ -16,13 +16,9 @@ body{
     background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
 }
 
-.carousel-inner  img {
-  width:640px;
-  height:720px;
-}
 
-#portfolio .carousel-inner img{
-    max-height: 70vh;    
+#portfolio .carousel-item img{
+    max-height: 70vh;
     min-height: 70vh;
     object-fit: cover;
 }
