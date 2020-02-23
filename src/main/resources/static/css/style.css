@@ -1,23 +1,45 @@
-body{
-    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);  
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 150px;
+    /* this needs to be bigger than footer height*/
+}
+
+.footer {
+    position: relative;
+    margin-top: -100px;
+    /* negative value of footer height */
+    height: 150px;
+    clear: both;
+    padding-top: 20px;
+}
+
+body {
+    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
 }
 
 #header img {
     width: 100px;
 }
 
-#header{    
+#header {
     background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
 }
 
-.hero{
+.hero {
     font-size: 40px;
     color: #f67e7d;
     background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
 }
 
-
-#portfolio .carousel-item img{
+#portfolio .carousel-item img {
     max-height: 70vh;
     min-height: 70vh;
     object-fit: cover;
@@ -32,29 +54,29 @@ body{
     flex-shrink: 0;
     overflow: hidden;
     background-color: #f67e7d;
-  }
+}
 
-  .project .figure{
-      overflow: hidden;
-      max-height: 300px;
-  }
+.project .figure {
+    overflow: hidden;
+    max-height: 300px;
+}
 
-  .project-details_container {
+.project-details_container {
     margin: 20px 40px;
     background-color: white;
     margin-top: -40px;
     position: relative;
     padding: 20px;
     text-align: center;
-  }
+}
 
-   .contact label{
-     color: white;
-   }
+.contact label {
+    color: white;
+}
 
-   .errormessage{
+.errormessage {
     color: red;
-   }
+}
 
 #footer {
     color: white;

@@ -32,5 +32,5 @@ public class IndexController implements WebMvcConfigurer {
             return "index";
         }
         return "emailsent";
-    }
+    } 
 }
