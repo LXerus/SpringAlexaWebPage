@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 public class ProjectUploadController {
@@ -25,8 +26,7 @@ public class ProjectUploadController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public  String addNewProject(@ModelAttribute("project") Project project){
-
+    public  String addNewProject(@ModelAttribute("project") Project project) throws IOException {
         projectService.create(project);
         return "index";
     }

@@ -5,6 +5,8 @@ import com.alexaportfolio.AlexaPortfolio.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class ProjectService {
      * @param project
      * @return
      */
-    public Project create(Project project){
+    public Project create(Project project) throws IOException {
         return projectRepository.save(project);
     }
 
@@ -52,6 +54,6 @@ public class ProjectService {
      * @return
      */
     public List<Project> findAll(){
-        return (List<Project>) projectRepository.findAll();
+        return(List<Project>) projectRepository.findAll();
     }
 }
