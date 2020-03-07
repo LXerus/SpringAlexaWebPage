@@ -12,12 +12,12 @@ import java.awt.*;
 
 @Data
 @Entity
-@Table(name = "photos")
-public class Photo {
+@Table(name = "album_photos")
+public class AlbumPhoto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int photoId;
+    private int albumPhotoId;
 
     @Column(nullable = true, unique = false)
     private String name;

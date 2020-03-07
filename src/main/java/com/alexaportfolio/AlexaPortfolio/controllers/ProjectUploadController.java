@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.Valid;
 import java.io.IOException;
 
@@ -26,8 +28,8 @@ public class ProjectUploadController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public  String addNewProject(@ModelAttribute("project") Project project) throws IOException {
-        projectService.create(project);
+    public  String addNewProject(@RequestParam("project") Project project, @RequestParam("photo")MultipartFile photoFile) throws Exception {
+        projectService.create(project, photoFile);
         return "index";
     }
 }

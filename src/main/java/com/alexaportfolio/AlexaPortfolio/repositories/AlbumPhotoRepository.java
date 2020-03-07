@@ -1,23 +1,23 @@
 package com.alexaportfolio.AlexaPortfolio.repositories;
 
-import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
+import com.alexaportfolio.AlexaPortfolio.models.AlbumPhoto;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Holds a repository of Photos
+ * Holds a repository of Photos for the Albums in specific
  * @author crodf
  */
 
 @Repository
-public interface PhotoRepository extends CrudRepository<ProjectPhoto, Integer> {
+public interface AlbumPhotoRepository extends CrudRepository<AlbumPhoto, Integer> {
 
     /**
      * This method will return a list of photos based on their name
      * @param name
      * @return
      */
-    public List<ProjectPhoto> findByName(String name);
+    public List<AlbumPhoto> findByName(String name);
 }

@@ -22,9 +22,12 @@ public class Album {
     @Column(nullable = false, unique = false)
     private String name;
 
+    @Column(nullable = false, unique = false)
+    private String path;
+
     @Column(nullable = true, unique = false)
     private String description;
 
     @OneToMany(mappedBy = "album")
-    private Set<Photo> photos;
+    private Set<AlbumPhoto> albumPhotos;
 }

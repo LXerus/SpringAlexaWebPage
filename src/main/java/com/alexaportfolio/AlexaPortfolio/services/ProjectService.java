@@ -4,9 +4,8 @@ import com.alexaportfolio.AlexaPortfolio.models.Project;
 import com.alexaportfolio.AlexaPortfolio.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 
 /**
@@ -20,12 +19,18 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private PhotoService photoService;
+
     /**
      * Creates a new project in the data base
      * @param project
      * @return
      */
-    public Project create(Project project) throws IOException {
+    public Project create(Project project, MultipartFile photoFile) throws Exception {
+        project.getProjectPhotoList().get(0).setPath("/images/");
+        photoService.saveProjectPhoto(project.getProjectPhotoList().get(0), photoFile);
+        photoService.save(project.getProjectPhotoList().get(0));
         return projectRepository.save(project);
     }
 

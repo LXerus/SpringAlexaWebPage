@@ -1,10 +1,9 @@
 package com.alexaportfolio.AlexaPortfolio.models;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.awt.*;
+import java.util.List;
 
 /**
  * This class represents the project entity, which will be used in the Portfolio Controller
@@ -25,6 +24,7 @@ public class Project {
     @Column(nullable = true, unique = false)
     private String description;
 
-    @Column(nullable = true, unique = false)
-    private byte[] image;
+    @OneToMany(mappedBy = "project")
+    private List<ProjectPhoto> projectPhotoList;
+
 }
