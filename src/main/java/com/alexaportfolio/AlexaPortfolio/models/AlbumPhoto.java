@@ -22,6 +22,9 @@ public class AlbumPhoto {
     @Column(nullable = true, unique = false)
     private String name;
 
+    @Column(nullable = false, unique = false)
+    private String path;
+
     @Column(nullable = true, unique = false)
     private String description;
 

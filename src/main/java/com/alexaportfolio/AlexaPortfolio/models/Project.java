@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This class represents the project entity, which will be used in the Portfolio Controller
@@ -25,6 +26,6 @@ public class Project {
     private String description;
 
     @OneToMany(mappedBy = "project")
-    private List<ProjectPhoto> projectPhotoList;
+    private Set<ProjectPhoto> projectPhotos;
 
 }

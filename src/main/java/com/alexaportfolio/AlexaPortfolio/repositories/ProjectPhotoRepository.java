@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @Repository
-public interface PhotoRepository extends CrudRepository<ProjectPhoto, Integer> {
+public interface ProjectPhotoRepository extends CrudRepository<ProjectPhoto, Integer> {
 
     /**
      * This method will return a list of photos based on their name

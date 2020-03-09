@@ -20,7 +20,7 @@ public class Skill {
     private int skillId;
 
     @Column(nullable = false, unique = false)
-    private String title;
+    private String name;
 
     @Column(nullable = false, unique = false)
     private String description;

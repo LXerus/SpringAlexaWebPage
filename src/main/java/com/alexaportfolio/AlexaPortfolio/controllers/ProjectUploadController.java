@@ -2,34 +2,56 @@ package com.alexaportfolio.AlexaPortfolio.controllers;
 
 
 import com.alexaportfolio.AlexaPortfolio.models.Project;
+import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
 import com.alexaportfolio.AlexaPortfolio.services.ProjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.validation.Valid;
-import java.io.IOException;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProjectUploadController {
 
+    Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping("/projectupload")
+    @RequestMapping(value = "/projectupload", method = RequestMethod.GET)
     public String projectUploadGet(Model model){
-        Project project = new Project();
-        model.addAttribute("project", project);
+        model.addAttribute("project", new Project());
         return "projectupload";
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public  String addNewProject(@RequestParam("project") Project project, @RequestParam("photo")MultipartFile photoFile) throws Exception {
-        projectService.create(project, photoFile);
+    @PostMapping(value = "/projectupload")
+    public  String addNewProject(@RequestParam("imageFile") MultipartFile imageFile, Project project){
+        try{
+            projectService.saveProject(project);
+        }catch (Exception ex){
+            String errorMesage = "unable to save project";
+            log.error(errorMesage);
+            ex.printStackTrace();
+            return "error";
+        }
+
+        ProjectPhoto projectPhoto = new ProjectPhoto();
+        projectPhoto.setName(imageFile.getOriginalFilename());
+        projectPhoto.setPath("/images/");
+        projectPhoto.setProject(project);
+
+        try{
+            projectService.saveProjectPhoto(projectPhoto, imageFile);
+        }catch (Exception ex){
+            String errorMesage = "unable to save the photo";
+            ex.printStackTrace();
+            log.error(errorMesage, ex);
+            return "error";
+        }
+
         return "index";
     }
 }

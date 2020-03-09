@@ -1,6 +1,9 @@
 package com.alexaportfolio.AlexaPortfolio.services;
 
+import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectDAO;
+import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectPhotoDAO;
 import com.alexaportfolio.AlexaPortfolio.models.Project;
+import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
 import com.alexaportfolio.AlexaPortfolio.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,21 +20,26 @@ import java.util.List;
 public class ProjectService {
 
     @Autowired
-    private ProjectRepository projectRepository;
+    IProjectPhotoDAO projectPhotoDAO;
 
     @Autowired
-    private PhotoService photoService;
+    IProjectDAO projectDAO;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     /**
      * Creates a new project in the data base
      * @param project
      * @return
      */
-    public Project create(Project project, MultipartFile photoFile) throws Exception {
-        project.getProjectPhotoList().get(0).setPath("/images/");
-        photoService.saveProjectPhoto(project.getProjectPhotoList().get(0), photoFile);
-        photoService.save(project.getProjectPhotoList().get(0));
-        return projectRepository.save(project);
+    public void saveProject(Project project) throws Exception {
+        projectDAO.save(project);
+    }
+
+    public void saveProjectPhoto(ProjectPhoto projectPhoto, MultipartFile imageFile) throws Exception {
+        projectPhotoDAO.saveProjectPhoto(projectPhoto, imageFile);
+        projectPhotoDAO.save(projectPhoto);
     }
 
     /**

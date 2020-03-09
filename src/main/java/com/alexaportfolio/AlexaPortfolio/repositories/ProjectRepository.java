@@ -2,8 +2,10 @@ package com.alexaportfolio.AlexaPortfolio.repositories;
 
 
 import com.alexaportfolio.AlexaPortfolio.models.Project;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Holads a repository of projects
@@ -11,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Integer> {
+public interface ProjectRepository extends CrudRepository<Project, Integer> {
 
 }
