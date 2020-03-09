@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProjectUploadController {
@@ -21,13 +20,13 @@ public class ProjectUploadController {
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value = "/projectupload", method = RequestMethod.GET)
+    @RequestMapping(value = "/newproject", method = RequestMethod.GET)
     public String projectUploadGet(Model model){
         model.addAttribute("project", new Project());
-        return "projectupload";
+        return "newproject";
     }
 
-    @PostMapping(value = "/projectupload")
+    @PostMapping(value = "/upload")
     public  String addNewProject(@RequestParam("imageFile") MultipartFile imageFile, Project project){
         try{
             projectService.saveProject(project);
@@ -52,6 +51,6 @@ public class ProjectUploadController {
             return "error";
         }
 
-        return "index";
+        return "newproject";
     }
 }
