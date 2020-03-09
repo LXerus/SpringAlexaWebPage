@@ -20,10 +20,10 @@ public class ProjectUploadController {
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value = "/newproject", method = RequestMethod.GET)
+    @RequestMapping(value = "/projectupload", method = RequestMethod.GET)
     public String projectUploadGet(Model model){
         model.addAttribute("project", new Project());
-        return "newproject";
+        return "projectupload";
     }
 
     @PostMapping(value = "/upload")
@@ -51,6 +51,6 @@ public class ProjectUploadController {
             return "error";
         }
 
-        return "newproject";
+        return "projectupload";
     }
 }
