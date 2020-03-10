@@ -39,7 +39,6 @@ public class ProjectUploadController {
 
         ProjectPhoto projectPhoto = new ProjectPhoto();
         projectPhoto.setName(imageFile.getOriginalFilename());
-        projectPhoto.setPath("/images/");
         projectPhoto.setProject(project);
 
         try{

@@ -6,6 +6,7 @@ import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
 import com.alexaportfolio.AlexaPortfolio.repositories.ProjectPhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Files;
@@ -32,9 +33,10 @@ public class ProjectPhotoDAO implements IProjectPhotoDAO {
     public void saveProjectPhoto(ProjectPhoto projectPhoto, MultipartFile imageFile) throws Exception {
         Path currentPath = Paths.get("."); // this gets us to src/main/resources without knowing the full path
         Path absolutePath = currentPath.toAbsolutePath();
-        projectPhoto.setPath(absolutePath + "/src/main/resource/static/images/");
+        projectPhoto.setPath(absolutePath + "/src/main/resources/static/photos/");
         byte[] bytes = imageFile.getBytes();
-        Path path = Paths.get(projectPhoto.getPath() + imageFile.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(imageFile.getOriginalFilename());
+        Path path = Paths.get(projectPhoto.getPath() + fileName);
         Files.write(path, bytes);
     }
 
