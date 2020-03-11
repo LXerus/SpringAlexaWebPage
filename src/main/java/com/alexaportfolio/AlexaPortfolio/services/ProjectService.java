@@ -4,6 +4,7 @@ import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectDAO;
 import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectPhotoDAO;
 import com.alexaportfolio.AlexaPortfolio.models.Project;
 import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
+import com.alexaportfolio.AlexaPortfolio.repositories.ProjectPhotoRepository;
 import com.alexaportfolio.AlexaPortfolio.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,16 @@ import java.util.List;
 public class ProjectService {
 
     @Autowired
-    IProjectPhotoDAO projectPhotoDAO;
+    private IProjectPhotoDAO projectPhotoDAO;
 
     @Autowired
-    IProjectDAO projectDAO;
+    private IProjectDAO projectDAO;
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private ProjectPhotoRepository projectPhotoRepository;
 
     /**
      * Creates a new project in the data base
@@ -37,6 +41,12 @@ public class ProjectService {
         projectDAO.save(project);
     }
 
+    /**
+     * Saves the image information in the data base and the file in the disk
+     * @param projectPhoto
+     * @param imageFile
+     * @throws Exception
+     */
     public void saveProjectPhoto(ProjectPhoto projectPhoto, MultipartFile imageFile) throws Exception {
         projectPhotoDAO.saveProjectPhoto(projectPhoto, imageFile);
         projectPhotoDAO.save(projectPhoto);
@@ -52,6 +62,15 @@ public class ProjectService {
         existingProject.setTitle(project.getTitle());
         existingProject.setDescription(project.getDescription());
         return projectRepository.save(existingProject);
+    }
+
+    /**
+     * Returns a list of photos based on the id submitted
+     * @param projectID
+     * @return
+     */
+    public List<ProjectPhoto> findProjectPhotos(int projectID){
+        return projectPhotoRepository.findByProjectId(projectID);
     }
 
     /**

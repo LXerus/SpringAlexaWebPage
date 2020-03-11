@@ -20,4 +20,11 @@ public interface ProjectPhotoRepository extends CrudRepository<ProjectPhoto, Int
      * @return
      */
     public List<ProjectPhoto> findByName(String name);
+
+    /**
+     * This method will return a list of ProjectPhotos based on the foreing key for projectID
+     * @param projectID
+     * @return
+     */
+    List<ProjectPhoto> findByProjectId(int projectID);
 }
