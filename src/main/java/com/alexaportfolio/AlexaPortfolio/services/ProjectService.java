@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Handles the upload services for the projects
@@ -69,7 +70,7 @@ public class ProjectService {
      * @param projectID
      * @return
      */
-    public List<ProjectPhoto> findProjectPhotos(int projectID){
+    public Set<ProjectPhoto> findProjectPhotos(int projectID){
         return projectPhotoRepository.findByProjectId(projectID);
     }
 

@@ -26,7 +26,7 @@ public class ProjectUploadController {
         return "projectupload";
     }
 
-    @PostMapping(value = "/upload")
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public  String addNewProject(@RequestParam("imageFile") MultipartFile imageFile, Project project){
         try{
             projectService.saveProject(project);

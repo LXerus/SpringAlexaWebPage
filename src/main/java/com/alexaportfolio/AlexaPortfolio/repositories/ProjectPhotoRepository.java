@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Holds a repository of Photos
@@ -26,5 +28,5 @@ public interface ProjectPhotoRepository extends CrudRepository<ProjectPhoto, Int
      * @param projectID
      * @return
      */
-    List<ProjectPhoto> findByProjectId(int projectID);
+    Set<ProjectPhoto> findByProjectId(int projectID);
 }
