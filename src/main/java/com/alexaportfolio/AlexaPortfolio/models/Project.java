@@ -3,6 +3,7 @@ package com.alexaportfolio.AlexaPortfolio.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,6 @@ public class Project {
     private String description;
 
     @OneToMany(mappedBy = "project")
-    private Set<ProjectPhoto> projectPhotos;
+    private List<ProjectPhoto> projectPhotos = new ArrayList<>();
 
 }

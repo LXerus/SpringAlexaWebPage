@@ -1,11 +1,16 @@
 package com.alexaportfolio.AlexaPortfolio.repositories;
 
 
-import com.alexaportfolio.AlexaPortfolio.models.Project;
+import java.util.List;
+
+import org.hibernate.mapping.Set;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.alexaportfolio.AlexaPortfolio.models.Project;
+import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
 
 /**
  * Holads a repository of projects
@@ -14,4 +19,5 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepository extends CrudRepository<Project, Integer> {
+
 }

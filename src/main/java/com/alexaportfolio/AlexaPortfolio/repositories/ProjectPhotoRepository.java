@@ -1,7 +1,10 @@
 package com.alexaportfolio.AlexaPortfolio.repositories;
 
 import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,17 +19,4 @@ import java.util.Set;
 @Repository
 public interface ProjectPhotoRepository extends CrudRepository<ProjectPhoto, Integer> {
 
-    /**
-     * This method will return a list of photos based on their name
-     * @param name
-     * @return
-     */
-    public List<ProjectPhoto> findByName(String name);
-
-    /**
-     * This method will return a list of ProjectPhotos based on the foreing key for projectID
-     * @param projectID
-     * @return
-     */
-    Set<ProjectPhoto> findByProjectId(int projectID);
 }

@@ -62,7 +62,9 @@
         <div th:each="project : ${projects}" class="row row-cols-1 row-cols-md-2">
             <div class="col mb-4">
                 <div class="card">
-                    <img th:src="${project.projectPhotos(0)}" class="card-img-top" alt="...">
+                    <div th:each="photo : ${project.projectPhotos}">
+                        <img th:src="@{${'/photos/' + photo.name}}" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 th:text="${project.title}" class="card-title"></h5>
                         <p th:text="${project.description}" class="card-text"></p>                        

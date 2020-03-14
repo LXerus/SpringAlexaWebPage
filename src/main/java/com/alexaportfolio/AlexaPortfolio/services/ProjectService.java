@@ -1,5 +1,6 @@
 package com.alexaportfolio.AlexaPortfolio.services;
 
+
 import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectDAO;
 import com.alexaportfolio.AlexaPortfolio.DAO.interfaces.IProjectPhotoDAO;
 import com.alexaportfolio.AlexaPortfolio.models.Project;
@@ -63,15 +64,6 @@ public class ProjectService {
         existingProject.setTitle(project.getTitle());
         existingProject.setDescription(project.getDescription());
         return projectRepository.save(existingProject);
-    }
-
-    /**
-     * Returns a list of photos based on the id submitted
-     * @param projectID
-     * @return
-     */
-    public Set<ProjectPhoto> findProjectPhotos(int projectID){
-        return projectPhotoRepository.findByProjectId(projectID);
     }
 
     /**

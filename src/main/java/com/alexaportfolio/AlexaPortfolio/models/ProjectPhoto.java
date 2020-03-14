@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "photos")
+@Table(name = "project_photos")
 public class ProjectPhoto {
 
     @Id
@@ -29,6 +29,6 @@ public class ProjectPhoto {
     private String comments;
 
     @ManyToOne
-    @JoinColumn(name = "projectID")
+    @JoinColumn(name = "projectId")
     private Project project;
 }
