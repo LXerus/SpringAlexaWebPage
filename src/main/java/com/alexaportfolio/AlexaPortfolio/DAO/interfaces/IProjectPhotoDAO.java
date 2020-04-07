@@ -6,10 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * This interface will dictate the behavior for the ProjectPhoto Data Access Object
+ * IProjectPhotoDAO dictates the behavior of the ProjectPhoto data access object
  * @author crodf
  */
-
 
 public interface IProjectPhotoDAO {
 

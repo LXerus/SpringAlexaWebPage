@@ -23,16 +23,11 @@ public class PortfolioController {
     @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value = "/loadProjects", method = RequestMethod.GET)
+    @RequestMapping(value = "/portfolio", method = RequestMethod.GET)
     public ModelAndView showProjects(){
         List<Project> projects = projectService.findAll();
-        for(Project project : projects){
-            for(ProjectPhoto photo : project.getProjectPhotos()){
-                System.out.println(photo.getName());
-            }
-        }
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("portfoliotest");
+        modelAndView.setViewName("portfolio");
         modelAndView.addObject("projects", projects);
         return modelAndView;
     }

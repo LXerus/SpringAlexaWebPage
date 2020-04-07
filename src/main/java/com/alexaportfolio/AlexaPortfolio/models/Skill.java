@@ -25,4 +25,12 @@ public class Skill {
     @Column(nullable = false, unique = false)
     private String description;
 
+    @Column(nullable = false, unique = false)
+    private String iconName;
+
+    @Column(nullable = false, unique = false)
+    private String iconPath;
+
+    /*@ManyToMany(mappedBy = "skills")
+    private Project project;*/
 }

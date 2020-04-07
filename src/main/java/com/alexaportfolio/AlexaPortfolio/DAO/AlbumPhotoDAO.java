@@ -5,12 +5,18 @@ import com.alexaportfolio.AlexaPortfolio.models.Album;
 import com.alexaportfolio.AlexaPortfolio.models.AlbumPhoto;
 import com.alexaportfolio.AlexaPortfolio.repositories.AlbumPhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * AlbumPhotoDAO implement the CRUD methods from the AlbumPhotoRepository
+ * @author crodf
+ */
+@Component
 public class AlbumPhotoDAO implements IAlbumPhotoDAO {
 
     @Autowired

@@ -6,6 +6,10 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+/**
+ * ContactService will execute all the Crud functions for the Contact entity
+ * @author crodf
+ */
 
 @Service
 public class ContactService {

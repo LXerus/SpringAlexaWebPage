@@ -13,7 +13,7 @@ import com.alexaportfolio.AlexaPortfolio.models.Project;
 import com.alexaportfolio.AlexaPortfolio.models.ProjectPhoto;
 
 /**
- * Holads a repository of projects
+ * Holds a repository of projects
  * @author crodf
  */
 

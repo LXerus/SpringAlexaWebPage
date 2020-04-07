@@ -5,9 +5,10 @@ import com.alexaportfolio.AlexaPortfolio.models.AlbumPhoto;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * This interface will dictate the behavior for the AlbumPhoto Data Access Object
+ * IAlbumPhotoDAO dictates the behavior of the AlbumPhoto data access object
  * @author crodf
  */
+
 
 public interface IAlbumPhotoDAO {
 

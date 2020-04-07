@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Cristhian Franco">
+    <title>Alexa Franco</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" type="/images/png" href="/images/logo_icono.png" />
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <div th:replace="fragments/header :: navbar">
+        </div>
+    </header>
+    <!--/Header-->
+
+    <!--Content-->
+    <section>
+        <div th:if="${listSize<=4}" class="container mt-5 mb-5">
+            <h3>Agregar imagen</h3>
+            <form action="#" th:action="@{/savePortraitImage}" th:object="${portraitImage}" method="POST"
+                enctype="multipart/form-data">
+                <div class="form-group ml-3">
+                    <div class="row">
+                        <div class="custom-file  col-8 col-md-6 ">
+                            <input name="portraitImageFile" type="file" class="custom-file-input"
+                                id="portraitImageFile-input">
+                            <label class="custom-file-label" for="portraitImageFile-input">Imagen</label>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <input value="Guardar" type="submit" class="pl-3 pr-3 btn btn-outline-dark ">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div th:if="${listSize>=5}" class="container mt-5 mb-5">
+            <h2>Lista de imagenes llena</h2>
+        </div>
+        <div class="container  mt-5 mb-5">
+            <table class="table">
+                <thead class="table-head">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Preview</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col"></th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <div th:if="${!portraitImageList.empty or portraitImageList!=null}">
+                        <tr th:each="portraitImage : ${portraitImageList}">
+                            <th scope="row" th:text="${portraitImageStat.count}"></th>
+                            <td><img class="portrait-image-thumbnail"
+                                    th:src="@{${'/portraitImages/' + portraitImage.name}}" alt="Thumbnail"></td>
+                            <td th:text="${portraitImage.name}"></td>
+                            <td><a th:href="@{findPortraitImage/(id=${portraitImage.portraitImageId})}"
+                                    class="btn btn-primary eBtn">Cambiar</a>
+                                    <a class="btn btn-danger dBtn" href="">Eliminar</a>                                
+                                </td>                            
+                        </tr>
+                    </div>
+                    <div th:if="${portraitImageList.empty or portraitImageList==null}">
+                        <tr>
+                            <h3>No hay imagenes para mostrar</h3>
+                        </tr>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Modal-->
+        <div class="modalForm">
+            <form action="#" th:action="@{/updatePortraitImage}" th:object="${selectedPortraitImage}" method="POST" enctype="multipart/form-data">
+                <div class="modal fade" id="portraitImageModal" tabindex="-1" role="dialog"
+                    aria-labelledby="portraitImageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="portraitImageModalLabel">Cambiar Imagen</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group ml-5">
+                                    <div class="row">
+                                        <label for="modal-image-id" class="col-sm-2 col-form-label">Id</label>
+                                        <input name="portraitImageId" id="modal-image-id" class="form-control col-8 col-md-6 mt-2 mb-2" type="text" placeholder="" readonly>
+                                    </div>
+                                    <div class="row">
+                                        <label for="modal-image-name" class="col-sm-2 col-form-label">Nombre</label>
+                                        <input name="name" id="modal-image-name" class="form-control col-8 col-md-6 mt-2 mb-2" type="text" placeholder="" readonly>
+                                    </div>
+                                    <div class="row">
+                                        <label for="newPortraitImage-input" class="col-sm-2 col-form-label">Nueva Imagen</label>
+                                        <div class="custom-file  col-8 col-md-6 mt-2 mb-2">
+                                            <input name="newPortraitImage" type="file" class="custom-file-input"
+                                                id="newPortraitImage-input">
+                                            <label class="custom-file-label"
+                                                for="newPortraitImage-input">Imagen</label>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button id="saveRef" type="submit" class="btn btn-outline-dark">Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--/Modal-->
+    </section>
+    <!--/Content-->
+
+    <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script crossorigin="anonymous" type="text/javascript" th:src="@{js/portrait_image_options.js}"
+        src="../static/js/portrait_image_options.js"></script>
+    <!--/Scripts-->
+</body>
+
+</html>

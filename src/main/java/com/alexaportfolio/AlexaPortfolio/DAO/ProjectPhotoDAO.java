@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Class to implement the methods from the ProjectPhotoRepository
+ * ProjectPhotoDAO implement the CRUD methods from the ProjectPhotoRepository
  * @author crodf
  */
 @Component

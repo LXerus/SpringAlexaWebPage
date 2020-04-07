@@ -38,29 +38,21 @@ html, body {
     height: 100%;
 }
 
-.project {
-    border: 1px solid #f67e7d;
-    border-radius: 10px;
-    margin: 10px;
-    width: 480px;
-    height: 500px;
-    flex-shrink: 0;
+.skill-icon{
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    min-width: 250px;
     overflow: hidden;
-    background-color: #f67e7d;
 }
 
-.project .figure {
-    overflow: hidden;
-    max-height: 300px;
+.portrait-image-thumbnail{
+    height: 100px;
+    width: 150px;
 }
 
-.project-details_container {
-    margin: 20px 40px;
-    background-color: white;
-    margin-top: -40px;
-    position: relative;
-    padding: 20px;
-    text-align: center;
+.project-img{
+    overflow: hidden;
 }
 
 .contact label {
@@ -69,6 +61,11 @@ html, body {
 
 .errormessage {
     color: red;
+}
+
+.table-head{
+    color: white;
+    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
 }
 
 #footer {

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * This class will implement the CRUD methods from the ProjectRepository
+ * ProjectDAO implement the CRUD methods from the ProjectRepository
  * @author crodf
  */
 @Component

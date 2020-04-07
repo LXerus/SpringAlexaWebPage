@@ -29,4 +29,11 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<ProjectPhoto> projectPhotos = new ArrayList<>();
 
+    /*@ManyToMany
+    @JoinTable(
+            name = "project_skill",
+            joinColumns = {@JoinColumn(name = "projectId")},
+            inverseJoinColumns = {@JoinColumn(name = "skillId")})
+    private List<Skill> projectSkills = new ArrayList<>();*/
+
 }

@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Handles the upload services for the projects
+ * ProjectService will execute all the Crud functions for the Project entity
  * @author crodf
  */
+
 
 @Service
 public class ProjectService {
