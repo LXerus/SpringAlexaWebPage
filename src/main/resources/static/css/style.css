@@ -1,0 +1,77 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#header img {
+    width: 150px;
+}
+
+#header {
+    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
+}
+
+#main .carousel-inner img {
+    height: 70vh;
+    object-fit: cover;
+    filter: grayscale(70%);
+}
+
+#carousel {
+    position: relative;
+}
+
+#carousel .overlay {    
+    z-index: 1;
+    height: 70vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#carousel .overlay .container, #carousel .overlay .row {
+    height: 100%;
+}
+
+.skill-icon{
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    min-width: 250px;
+    overflow: hidden;
+}
+
+.portrait-image-thumbnail{
+    height: 100px;
+    width: 150px;
+}
+
+.project-img{
+    overflow: hidden;
+}
+
+.contact label {
+    color: white;
+}
+
+.errormessage {
+    color: red;
+}
+
+.table-head{
+    color: white;
+    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
+}
+
+#footer {
+    color: white;
+    background: linear-gradient(90deg, #0b032d, #0b032d 25%, #843b62);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
